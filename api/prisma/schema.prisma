@@ -8,3 +8,71 @@ datasource db {
     provider   = "postgresql"
     extensions = [pgcrypto]
 }
+
+enum Gender {
+    MALE
+    FEMALE
+}
+
+enum Marital {
+    NEVER_MARRIED
+    DIVORCED
+    WIDOWED
+}
+
+enum Choice {
+    YES
+    NO
+    MAYBE
+}
+
+enum Stage {
+    ONBOARDING
+    VERIFIED
+    MATCHES_SUGGESTED
+    IN_CONVERSATION
+    MEETING_SCHEDULED
+    CLOSED
+}
+
+model Matchmaker {
+    id       String    @id @default(uuid())
+    name     String
+    username String    @unique
+    password String
+    clients  Profile[]
+}
+
+model Profile {
+    id          String   @id @default(uuid())
+    firstName   String
+    lastName    String
+    gender      Gender
+    dob         DateTime
+    country     String
+    city        String
+    heightCm    Int
+    email       String   @unique
+    phone       String   @unique
+    college     String
+    degree      String
+    incomeLpa   Int
+    company     String
+    designation String
+    marital     Marital
+    languages   String[]
+    siblings    Int
+    caste       String
+    religion    String
+    wantKids    Choice
+    relocate    Choice
+    pets        Choice
+    stage       Stage    @default(ONBOARDING)
+    createdAt   DateTime @default(now())
+
+    matchmakerId String?
+    matchmaker   Matchmaker? @relation(fields: [matchmakerId], references: [id])
+
+    @@index([gender])
+    @@index([matchmakerId])
+}
