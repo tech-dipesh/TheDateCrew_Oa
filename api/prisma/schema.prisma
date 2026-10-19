@@ -41,6 +41,8 @@ model Matchmaker {
     username String    @unique
     password String
     clients  Profile[]
+    notes    Note[]
+    sent     SentMatch[]
 }
 
 model Profile {
@@ -72,7 +74,35 @@ model Profile {
 
     matchmakerId String?
     matchmaker   Matchmaker? @relation(fields: [matchmakerId], references: [id])
+    notes        Note[]
+    sentFrom     SentMatch[] @relation("customer")
+    sentTo       SentMatch[] @relation("match")
 
     @@index([gender])
     @@index([matchmakerId])
+}
+
+model Note {
+    id           String     @id @default(uuid())
+    text         String
+    createdAt    DateTime   @default(now())
+    profileId    String
+    profile      Profile    @relation(fields: [profileId], references: [id], onDelete: Cascade)
+    matchmakerId String
+    matchmaker   Matchmaker @relation(fields: [matchmakerId], references: [id])
+
+    @@index([profileId])
+}
+
+model SentMatch {
+    id           String     @id @default(uuid())
+    createdAt    DateTime   @default(now())
+    customerId   String
+    customer     Profile    @relation("customer", fields: [customerId], references: [id], onDelete: Cascade)
+    matchId      String
+    match        Profile    @relation("match", fields: [matchId], references: [id], onDelete: Cascade)
+    matchmakerId String
+    matchmaker   Matchmaker @relation(fields: [matchmakerId], references: [id])
+
+    @@unique([customerId, matchId])
 }
