@@ -5,6 +5,7 @@
     "build": "prisma generate",
     "start": "bun run src/index.ts",
     "lint": "eslint .",
+    "reset": "prisma migrate reset",
     "type": "tsc",
     "generate": "prisma generate",
     "migrate": "prisma migrate dev"
