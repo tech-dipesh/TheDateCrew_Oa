@@ -1,14 +1,15 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "bun run --watch src/index.ts",
+    "dev": "bun  --watch src/index.ts",
     "build": "prisma generate",
-    "start": "bun run src/index.ts",
+    "start": "bun  src/index.ts",
     "lint": "eslint .",
     "reset": "prisma migrate reset",
     "type": "tsc",
     "generate": "prisma generate",
-    "migrate": "prisma migrate dev"
+    "migrate": "prisma migrate dev",
+    "seed": "bun src/seed/run.ts"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

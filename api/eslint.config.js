@@ -8,7 +8,10 @@ export default defineConfig(
   tseslint.configs.strictTypeChecked,
   {
     languageOptions: { parserOptions: { projectService: true, tsconfigRootDir: import.meta.dirname } },
-    rules: { "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }] },
+    rules: {
+      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", ignoreRestSiblings: true }],
+      "@typescript-eslint/restrict-template-expressions": ["error", { allowNumber: true }],
+    },
   },
   { files: ["eslint.config.js"], extends: [tseslint.configs.disableTypeChecked] },
 )
