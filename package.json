@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "back": "cd api && pn run dev",
+    "front": "cd web && pn run dev"
+  }
+}
