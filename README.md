@@ -8,11 +8,20 @@ Internal tool for The Date Crew matchmakers.
 - Vite SPA: Minimal Frontend web page. 
 
 ## Setup
-    cd api && pnpm install
-    cp .env.example .env
-    pnpm migrate
-    pnpm dev
+```bash
+    cd api && pnpm install && cp .env.example .env ## Fill your Db url
+    pnpm migrate && pnpm seed && pnpm dev
+```
+## Another Tab:
+`cd ../web && pnpm install && cp .env.example .env && pnpm dev` 
 
-## Docs
+Seed wipes the tables first.
+- Demo login: priya / match1234 (or arjun).
 
-Matching write-up and decisions land in docs/ as the levels ship.
+## Data
+200 generated profiles, 100 men and 100 women, deterministic. Name, city, college and company pools are common public Indian lists.
+## Design:
+It worked on the opposite gender pool with the hard filter first like younger earn less or be shoter. And also whoever suruve we add ont eh similarity numbering with a like 1, 0.4 or even 0. 
+The final score is the weighted average.
+The ai  integration for the ranking i've used for with a: `grok` to write a human part and a top 10 matches.
+With the Age is calclaute from a bunch of dob, request time. Income is in the lakhs per annum.
