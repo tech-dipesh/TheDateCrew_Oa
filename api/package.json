@@ -13,6 +13,8 @@
     "reset": "prisma migrate reset",
     "type": "tsc",
     "generate": "prisma generate",
+    "pull": "prisma db pull",
+    "postinstall": "prisma generate",
     "migrate": "prisma migrate dev",
     "seed": "bun src/seed/run.ts"
   },

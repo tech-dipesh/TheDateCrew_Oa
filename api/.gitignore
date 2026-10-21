@@ -1,6 +1,5 @@
 node_modules
 .env
 .vercel
-prisma/migrations
 prisma/generated
 api/index.js

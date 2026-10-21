@@ -1,14 +1,13 @@
 generator client {
-    provider        = "prisma-client"
-    output          = "./generated/prisma"
-    previewFeatures = ["postgresqlExtensions"]
+  provider        = "prisma-client"
+  output          = "./generated/prisma"
+  previewFeatures = ["postgresqlExtensions"]
 }
 
 datasource db {
-    provider   = "postgresql"
-    extensions = [pgcrypto]
+  provider = "postgresql"
+  extensions = [pgcrypto]
 }
-
 enum Gender {
     MALE
     FEMALE
