@@ -45,5 +45,9 @@ export interface Match {
 }
 
 export interface MatchList { eligible: number; rejected: number; matches: Match[] }
+export interface Explain { source: string; notes: Record<string, string> }
+export interface Why { key: string; text: string }
+export interface Missed { id: string; firstName: string; lastName: string; age: number; city: string; score: number; why: Why[] }
+export interface RejectedList { total: number; summary: Record<string, number>; rejected: Missed[] }
 export interface Note { id: string; text: string; createdAt: string }
 export interface Email { to: string; subject: string; body: string }

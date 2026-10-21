@@ -1,10 +1,12 @@
-import { nice } from "@/text"
 import type { ReactNode } from "react"
+import { nice } from "@/text"
 
 const box = "w-full border border-edge bg-black/40 px-5 py-2.5 text-white placeholder:text-white/50"
 export const field = `${box} rounded-full`
 export const area = `${box} rounded-3xl`
 export const solid = "rounded-full bg-amber px-5 py-2.5 font-medium text-black transition-colors duration-200 hover:bg-gold disabled:opacity-50"
+
+export const line = "rounded-full border border-edge px-5 py-2.5 transition-colors duration-200 hover:border-gold"
 
 export function Page({ children }: { children: ReactNode }) {
   return <main className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">{children}</main>
